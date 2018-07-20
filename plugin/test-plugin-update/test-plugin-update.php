@@ -8,7 +8,10 @@ Author: Jeremy Clark
 Author URI: http://clark-technet.com
 */
 
-
+/**
+ * It's the code you have to include in your plugin for send the data
+ * 
+ */
 /*
 // TEMP: Enable update check on every request. Normally you don't need this! This is for testing only!
 // NOTE: The 
@@ -45,12 +48,14 @@ function check_for_plugin_update($checked_data) {
 	$args = array(
 		'slug' => $plugin_slug,
 		'version' => $checked_data->checked[$plugin_slug .'/'. $plugin_slug .'.php'],
+		
 	);
 	$request_string = array(
 			'body' => array(
 				'action' => 'basic_check', 
 				'request' => serialize($args),
-				'api-key' => md5(get_bloginfo('url'))
+				'api-key' => md5(get_bloginfo('url')),
+				'licence' => 'ADD_YOU_LICENCE_HERE',// i'll suggest to use the option system of wordpress to manage it
 			),
 			'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo('url')
 		);
@@ -86,7 +91,8 @@ function plugin_api_call($def, $action, $args) {
 			'body' => array(
 				'action' => $action, 
 				'request' => serialize($args),
-				'api-key' => md5(get_bloginfo('url'))
+				'api-key' => md5(get_bloginfo('url')),
+				'licence' => 'ADD_YOU_LICENCE_HERE',// i'll suggest to use the option system of wordpress to manage it
 			),
 			'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo('url')
 		);

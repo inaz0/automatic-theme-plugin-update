@@ -17,7 +17,7 @@ if( !empty($_POST['action']) ){
 	
 	if( !empty($_POST['licence']) && !empty($_POST['api-key']) ){
 	
-		if( $_POST['licence'] !== $licences['iticonseil-rgpd'][$_POST['api-key']] ){
+		if( $_POST['licence'] !== $licences[$args->slug][$_POST['api-key']] ){
 	
 			return false;
 		}
@@ -30,36 +30,22 @@ if( !empty($_POST['action']) ){
 	}
 }
 
-/*
-
-else if( !empty($_GET['licence']) && !empty($_GET['domain_key']) ){
-
-	if( array_search($_GET['licence'], $licences['iticonseil-rgpd']) === false ){
-
-		return false;
-	}
-	
-	$domain_key = array_search($_GET['licence'], $licences['iticonseil-rgpd']);
-}
-else
-	return false;*/
-
 // Plugin with update info
-$packages['iticonseil-rgpd'] = array( //Replace plugin with the plugin slug that updates will be checking for
+$packages['my_plugin'] = array( //Replace plugin with the plugin slug that updates will be checking for
     'versions' => array(
         '1.7.2' => array( //Array name should be set to current version of update
             'version' => '1.7.2', //Current version available
             'date' => '2018-07-19', //Date version was released
-            'author' => 'Alexandre JOLY', //Author name - can be linked using html - <a href="http://link-to-site.com">Author Name</a>
+            'author' => 'Inazo', //Author name - can be linked using html - <a href="http://link-to-site.com">Author Name</a>
             'requires' => '4.7.4', // WP version required for plugin
             'tested' => '4.9.7', // WP version tested with
-            'homepage' => 'https://www.iti-conseil.com', // Site devoted to your plugin if available
+            'homepage' => 'https://www.kanjian.fr', // Site devoted to your plugin if available
             'downloaded' => '48', // Number of times downloaded
             'external' => '', // Unused
             //plugin.zip is the same as file_name
             'package' => $api_url.'/download.php?licence='.$licence_used.'&key_down='.$key_to_download,
             //file_name is the name of the file in the update folder.
-            'file_name' => 'iticonseil-rgpd.zip',
+            'file_name' => 'my_plugin.zip',
             'sections' => array(
                 /* Plugin Info sections tabs.  Each key will be used as the title of the tab, value is the contents of tab.
                   Must be lowercase to function properly
@@ -76,6 +62,6 @@ $packages['iticonseil-rgpd'] = array( //Replace plugin with the plugin slug that
         )
     ),
     'info' => array(
-        'url' => 'https://www.iti-conseil.com'  // Site devoted to your plugin if available
+        'url' => 'https://www.kanjian.fr'  // Site devoted to your plugin if available
     )
 );
